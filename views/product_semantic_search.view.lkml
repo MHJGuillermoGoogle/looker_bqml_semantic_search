@@ -60,7 +60,7 @@ view: product_semantic_search {
       (
         SELECT ml_generate_embedding_result, content AS query
         FROM ML.GENERATE_EMBEDDING(
-          MODEL ${product_embeddings_model.SQL_TABLE_NAME}
+          MODEL ${product_embeddings_model.SQL_TABLE_NAME},
           (SELECT {% parameter product_description %} AS content)
         )
       ),
