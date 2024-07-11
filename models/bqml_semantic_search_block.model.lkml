@@ -36,7 +36,33 @@ explore: product_semantic_search {
     relationship: many_to_one
     sql: RIGHT JOIN ${order_items.SQL_TABLE_NAME} AS order_items_customer ON ${order_items_customer.id} = ${order_items.id} AND ${order_items.user_id} =  ${order_items_customer.user_id};;
   }
+}
 
+### EXPLORE FOR MATCHED GL ACCOUNT ONLY ###
+explore: gl_account_semantic_search {
+  join: gl_account_details {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${gl_account_details.gl_account_code} = ${gl_account_semantic_search.matched_gl_account_code};;
+  }
+}
+
+### EXPLORE FOR MATCHED COST CENTER ONLY ###
+explore: cost_center_semantic_search {
+  join: cost_center_details {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${cost_center_details.cost_center_code} = ${cost_center_semantic_search.matched_cost_center_code};;
+  }
+}
+
+### EXPLORE FOR MATCHED PROFIT CENTER ONLY ###
+explore: profit_center_semantic_search {
+  join: profit_center_details {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${profit_center_details.profit_center_code} = ${profit_center_semantic_search.matched_profit_center_code};;
+  }
 }
 
 ### END ###

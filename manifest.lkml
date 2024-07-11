@@ -14,3 +14,7 @@ constant: BQML_REMOTE_CONNECTION_ID {
 constant: LOOKER_BIGQUERY_CONNECTION_NAME {
   value: "semantic_search_block"
 }
+
+constant: BQML_EMBEDDINGS_MODEL_ID {
+  value: "finance-looker-424218.semantic_search_block.embeddings_model"
+}
